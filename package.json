@@ -1,0 +1,10 @@
+{
+  "name": "dropbox-api-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.79.0",
+    "request-progress": "^3.0.0"
+  }
+}
