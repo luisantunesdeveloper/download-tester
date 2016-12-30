@@ -1,7 +1,7 @@
 'use strict';
 
 const fs = require('fs');
-const mfd = require('../mfd');
+const dt = require('../dt');
 const chalk = require('chalk');
 
 // process command line arguments
@@ -28,7 +28,7 @@ if (!fs.existsSync(downloadOutputDirectory)){
 // make the requests
 console.log(chalk.green(`${numberOfRequests} requests for ${link}...`));
 console.log(chalk.green(`Output directory: ${downloadOutputDirectory}`));
-const listener = mfd(link, numberOfRequests, outputFileExtension, downloadOutputDirectory);
+const listener = dt(link, numberOfRequests, outputFileExtension, downloadOutputDirectory);
 const time = process.hrtime();
 
 //listen the events
