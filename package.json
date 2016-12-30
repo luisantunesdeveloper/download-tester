@@ -6,7 +6,7 @@
     "url": "git+https://github.com/luisantunesdeveloper/download-tester.git"
   },
   "author": "Luis Antunes <luisantunes.developer@gmail.com>",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./cli",
   "license": "MIT",
   "dependencies": {
@@ -23,7 +23,9 @@
     "url": "https://github.com/luisantunesdeveloper/download-tester/issues"
   },
   "homepage": "https://github.com/luisantunesdeveloper/download-tester#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^18.1.0"
+  },
   "keywords": [
     "tester",
     "download",

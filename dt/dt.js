@@ -23,6 +23,7 @@ function createIterable(n) {
  * @param {String} numberOfRequests Numbers of requests to be made
  * @param {String} outputFileExtension The extension to be appended at the end of the file
  * @param {String} downloadOutputDirectory The output directory of the downloaded files
+ * @return {Object} EventEmitter
  */
 function executor(link, numberOfRequests, outputFileExtension, downloadOutputDirectory) {
     const iterable = createIterable(numberOfRequests);
@@ -30,6 +31,9 @@ function executor(link, numberOfRequests, outputFileExtension, downloadOutputDir
     for (const i of iterable) {
         const filename = downloadOutputDirectory ? `${downloadOutputDirectory}/download_${i}.${outputFileExtension}` : `download_${i}.${outputFileExtension}`;
         progress(request(link))
+            .on('response', (response) => {
+                emitter.emit('response', {number: i, response: response});
+            })
             .on('progress', (state) => {
                 emitter.emit('progress', {number: i, state: state});
             })
