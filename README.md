@@ -17,7 +17,7 @@ yarn install
 
 #### 1 As a dependency
 ```
-const dt = require('../dt');  
+const dt = require('download-tester');  
 const listener = dt(link, numberOfRequests, outputFileExtension, downloadOutputDirectory);
 ```
 
