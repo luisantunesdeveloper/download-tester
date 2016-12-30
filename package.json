@@ -6,8 +6,8 @@
     "url": "git+https://github.com/luisantunesdeveloper/download-tester.git"
   },
   "author": "Luis Antunes <luisantunes.developer@gmail.com>",
-  "version": "0.0.2",
-  "main": "./cli",
+  "version": "0.0.3",
+  "main": "./dt",
   "license": "MIT",
   "dependencies": {
     "chalk": "^1.1.3",
