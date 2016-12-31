@@ -6,7 +6,7 @@
     "url": "git+https://github.com/luisantunesdeveloper/download-tester.git"
   },
   "author": "Luis Antunes <luisantunes.developer@gmail.com>",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./core",
   "license": "MIT",
   "dependencies": {

@@ -10,7 +10,7 @@ const crypto = require('crypto');
 
 // defaults
 const defaultNumberOfRequests = 1;
-const defaultOutputDir = `${__dirname}/output`;
+const defaultOutputDir = `output`;
 const defaultOutputFilename = 'file';
 
 function getHash() {
