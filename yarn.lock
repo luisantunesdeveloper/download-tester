@@ -1362,7 +1362,7 @@ mime-db@~1.25.0:
   version "1.25.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.25.0.tgz#c18dbd7c73a5dbf6f44a024dc0d165a1e7b1c392"
 
-mime-types@^2.1.12, mime-types@~2.1.7:
+mime-types@^2.1.12, mime-types@^2.1.13, mime-types@~2.1.7:
   version "2.1.13"
   resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.13.tgz#e07aaa9c6c6b9a7ca3012c69003ad25a39e92a88"
   dependencies:
@@ -1453,6 +1453,12 @@ object.omit@^2.0.0:
   dependencies:
     for-own "^0.1.4"
     is-extendable "^0.1.1"
+
+observe@^1.3.7:
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/observe/-/observe-1.3.7.tgz#b38bd5a897b1267447c21ac501b01b3eca701c8c"
+  dependencies:
+    proto "*"
 
 once@^1.3.0, once@^1.4.0:
   version "1.4.0"
@@ -1564,6 +1570,10 @@ pretty-format@^18.1.0:
 private@^0.1.6:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.6.tgz#55c6a976d0f9bafb9924851350fe47b9b5fbb7c1"
+
+proto@*:
+  version "1.0.19"
+  resolved "https://registry.yarnpkg.com/proto/-/proto-1.0.19.tgz#4dba250b34398ae242de24153e7bf9dab2fe4385"
 
 prr@~0.0.0:
   version "0.0.0"

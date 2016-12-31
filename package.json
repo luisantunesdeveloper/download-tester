@@ -7,10 +7,12 @@
   },
   "author": "Luis Antunes <luisantunes.developer@gmail.com>",
   "version": "0.0.4",
-  "main": "./dt",
+  "main": "./core",
   "license": "MIT",
   "dependencies": {
     "chalk": "^1.1.3",
+    "mime-types": "^2.1.13",
+    "observe": "^1.3.7",
     "request": "^2.79.0",
     "request-progress": "^3.0.0"
   },

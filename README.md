@@ -1,11 +1,11 @@
 # download-tester
-## File downloader with repetitions  
+## Multiple file downloader with repetitions and file auto-extensions
 I did this tool because the available tools like curl are slow when doing something this:  
 ```
 curl -s "http://google.com?[1-1000]"
 ```  
-The above took more than 40 seconds to complete, while with download-tester it took roughly 5 seconds.  
-Download-tester downloads each request concurrently.  
+The above took more than 40 seconds to complete, while with download-tester it took roughly 13 seconds.  
+Download-tester downloads each request concurrently. The extension for the downloaded files is automatically appended.
 
 ### Install
 ```
@@ -15,37 +15,46 @@ yarn install
 
 ### Usage
 
-#### 1 As a dependency
+#### 1 With dependency of dt
 ```
+const args = {
+	location,
+	numberOfRequests,
+	outputFilename,
+	outputDir
+};
+
 const dt = require('download-tester');  
-const listener = dt(link, numberOfRequests, outputFileExtension, downloadOutputDirectory);
+const listener = dt(args);
 ```
 
 The following events are available to be listened:  
 
 ```
-listener.on('response', (response) => {
-    emitter.emit('response', {number: i, response: response});
+.on('response', (response) => {
+    emitter.emit('response', {number: i, args: req.args, response: response});
 })
-listener.on('progress', (state) => {
-    emitter.emit('progress', {number: i, state: state});
+.on('progress', (state) => {
+    emitter.emit('progress', {number: i, args: req.args, state: state});
 })
-listener.on('error', (err) => {
-    emitter.emit('error', {number: i, err: err});
+.on('error', (err) => {
+    emitter.emit('error', {number: i, args: req.args, err: err});
 })
-listener.on('end', () => {
-    emitter.emit('end', {number: i});
-})
+.on('end', () => {
+    emitter.emit('end', {number: i, args: req.args});
+});
 ```
+#### 1 With dependency of mdt  
+See examples
 
 #### 2 From npm scripts with parameters
 ```
-npm run cli [link numberOfRequests outputFileExtension [outputDir]]
+npm run cli [location numberOfRequests [outputFilename outputDir]]
 ```
 ##### Parameters
-link: STRING -> [URL](https://en.wikipedia.org/wiki/Uniform_Resource_Locator)  
+location: STRING -> [URL](https://en.wikipedia.org/wiki/Uniform_Resource_Locator)  
 numberOfRequests: INT -> number of repetitions  
-outputFileExtension: STRING -> the extension of the files  
+outputFilename: STRING -> the file name used in the downloads 
 outputDir: STRING -> the destination directory of the downloaded files
 
 
@@ -53,7 +62,5 @@ outputDir: STRING -> the destination directory of the downloaded files
 
 ##### TODO 
 - Unit tests
-- Multiple file downloads from different locations
-- Auto extension from 'content-disposition'
-- A real cli
-- Stream composition
+- A real cli with support for input file pipping 
+- External stream composition
