@@ -63,4 +63,3 @@ outputDir: STRING -> the destination directory of the downloaded files
 ##### TODO 
 - Unit tests
 - A real cli with support for input file pipping 
-- External stream composition
