@@ -55,6 +55,9 @@ function outputPath(i, outputDir, outputFilename, outputFileExtension) {
 } 
 
 function execute(requests) {
+    if (!requests) {
+        return new Error('There is no requests to be made');
+    }
     const emitters = requestMultiStreams.streams(requests);
     for(let key in emitters) {
         emitters[key].on('response', (data) => {

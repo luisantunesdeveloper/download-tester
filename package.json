@@ -1,6 +1,6 @@
 {
   "name": "download-tester",
-  "description": "file downloader with repetitions",
+  "description": "Remote file downloader/tester with repetitions",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/luisantunesdeveloper/download-tester.git"
@@ -12,21 +12,26 @@
   "dependencies": {
     "chalk": "^1.1.3",
     "commander": "^2.9.0",
+    "gauge": "^2.7.2",
     "mime-types": "^2.1.13",
-    "observe": "^1.3.7",
     "request": "^2.79.0",
     "request-multi-streams": "^0.0.4",
     "request-progress": "^3.0.0"
   },
   "scripts": {
-    "test": "jest"
+    "cli": "node ./cli",
+    "example": "node ./examples",
+    "test": "node ./tests/*.js | tap-spec",
+    "test-cov": "tap tests/**/*.js --cov --coverage-report=lcov"
   },
   "bugs": {
     "url": "https://github.com/luisantunesdeveloper/download-tester/issues"
   },
   "homepage": "https://github.com/luisantunesdeveloper/download-tester#readme",
   "devDependencies": {
-    "jest": "^18.1.0"
+    "tap": "^9.0.1",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3"
   },
   "keywords": [
     "tester",

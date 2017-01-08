@@ -1,5 +1,5 @@
 # download-tester
-## Multiple file downloader with repetitions and file auto-extensions
+## Remote file downloader/tester with repetitions and file download auto-extensions
 I did this tool because the available tools like curl are slow when doing something this:  
 ```
 curl -s "http://google.com?[1-1000]"
@@ -17,49 +17,60 @@ yarn install
 
 #### 1 With dependency of dt
 ```
-const args = {
-	location,
-	numberOfRequests,
-	outputFilename,
-	outputDir
+const req1 = {
+    options: {
+        url: 'https://cdn.pixabay.com/photo/2014/03/27/21/10/waterfall-299685_1280.jpg'
+    },
+    numberOfRequests: 10,
+    stream: 'fsStream'
 };
 
-const dt = require('download-tester');  
-const listener = dt(args);
+const req2 = {
+    options: {
+        url: 'http://www.textfiles.com/fun/acronym.txt'
+    },
+    numberOfRequests: 10,
+    stream: 'stdOutputStream'
+};
+
+const emitters = dt.execute([req1, req2]);
 ```
 
-The following events are available to be listened:  
+From the responses above the following events are available to be listened:  
 
 ```
-.on('response', (response) => {
-    emitter.emit('response', {number: i, args: req.args, response: response});
-})
-.on('progress', (state) => {
-    emitter.emit('progress', {number: i, args: req.args, state: state});
-})
-.on('error', (err) => {
-    emitter.emit('error', {number: i, args: req.args, err: err});
-})
-.on('end', () => {
-    emitter.emit('end', {number: i, args: req.args});
-});
+for(let key in emitters) {
+    emitters[key].on('response', (response) => {
+        emitter.emit('response', {reqNumber: reqNumber, args: args, response: response, stream: stream});
+    })
+    emitters[key].on('progress', (progress) => {
+        emitter.emit('progress', {reqNumber: reqNumber, args: args, progress: progress});
+    })
+    emitters[key].on('end', () => {
+        emitter.emit('end', {reqNumber: reqNumber, args: args});
+    })
+    emitters[key].on('error', (error) => {
+        emitter.emit('error', {reqNumber: reqNumber, args: args, error: error});
+    });
+}
 ```
-#### 2 With dependency of mdt  
-See examples
+#### 2 With the cli
 
-#### 3 From npm scripts with parameters
-```
-npm run cli [location numberOfRequests [outputFilename outputDir]]
-```
-##### Parameters
-location: STRING -> [URL](https://en.wikipedia.org/wiki/Uniform_Resource_Locator)  
-numberOfRequests: INT -> number of repetitions  
-outputFilename: STRING -> the file name used in the downloads 
-outputDir: STRING -> the destination directory of the downloaded files
+Usage: cli :  npm run cli dt <url> [numberOfRequests] [options]
 
+
+  Commands:
+
+    dt [options] <url> [numberOfRequests]
+
+  Tests and downloads the resources pointed by the url.
+
+  Options:
+
+    -h, --help     output usage information
+    -V, --version  output the version number
 
 ##### Works with node > 4.x
 
 ##### TODO 
-- Unit tests
-- A real cli with support for input file pipping 
+- Bulk test/download with through the usage of a ".csv" file
