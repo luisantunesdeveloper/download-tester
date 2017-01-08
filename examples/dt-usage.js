@@ -7,7 +7,7 @@ const req1 = {
 	options: {
 		url: 'https://cdn.pixabay.com/photo/2014/03/27/21/10/waterfall-299685_1280.jpg'
 	},
-	numberOfRequests: 1,
+	numberOfRequests: 5,
 	stream: 'fsStream'
 };
 
@@ -15,7 +15,7 @@ const req2 = {
 	options: {
 		url: 'http://www.textfiles.com/fun/acronym.txt'
 	},
-	numberOfRequests: 1,
+	numberOfRequests: 10,
 	stream: 'stdOutputStream'
 };
 

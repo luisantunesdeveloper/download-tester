@@ -6,12 +6,12 @@ const chalk = require("chalk");
 function action(url, numberOfRequests, options) {
 
     const isFsStream = (options) => {
-        if (options.std) {
-            console.log(chalk.gray('Output: stdOutputStream'));
-            return 'stdOutputStream';
-        } else if (options.dir || options.file) {
+        if (options.std || options.dir || options.file) {
             console.log(chalk.gray('Output: fsStream'));
             return 'fsStream';
+        } else {
+            console.log(chalk.gray('Output: stdOutputStream'));
+            return 'stdOutputStream';
         }
     };
 

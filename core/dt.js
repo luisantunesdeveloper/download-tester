@@ -61,11 +61,11 @@ function execute(requests) {
     const emitters = requestMultiStreams.streams(requests);
     for(let key in emitters) {
         emitters[key].on('response', (data) => {
-            if (data.args.stream === 'fsStream') {
+            if (data.args.stream === 'fsStream' || data.args.outputDir || data.args.outputFilename) {
                 let path = buildOutput(data)(outputDir(data.args))(outputFilename(data.args));
-                data.stream.pipe(outputStreams[data.args.stream](path));
-            } else if (data.args.stream === 'stdOutputStream') {
-                data.stream.pipe(outputStreams[data.args.stream]);
+                data.stream.pipe(outputStreams['fsStream'](path));
+            } else {
+                data.stream.pipe(outputStreams['stdOutputStream']);
             }
         });
     }
@@ -75,4 +75,3 @@ function execute(requests) {
 module.exports = {
     execute: execute
 }
-
